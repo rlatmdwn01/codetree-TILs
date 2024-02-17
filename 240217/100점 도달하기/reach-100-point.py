@@ -9,4 +9,4 @@ for i in range(n,101):
     elif 60<=i<70:
         print('D',end=' ')
     else:
-        print('F')
+        print('F',end=' ')
