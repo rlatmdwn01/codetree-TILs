@@ -2,7 +2,7 @@ a,b=input().split()
 a=int(a)
 b=int(b)
 
-if b>a:
+if a>b:
     a,b=b,a
 
 sum_val=0
