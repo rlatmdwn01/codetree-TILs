@@ -1,10 +1,11 @@
 n=int(input())
 cnt=1
+m=n
 
 for i in range(1,n+1):
-    cnt+=1
-    n=n/cnt
-    if n<=1:
+    if m//cnt>1:
+        cnt+=1
+        m=m//cnt
+    else:
         break
-    
-print(i+1)
+print(cnt+1)
