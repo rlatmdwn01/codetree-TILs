@@ -1,8 +1,8 @@
-n=int(input())
+n = int(input())  # n 입력 받기
 
-for i in range(n):
-    for j in range(1,6-i):
-        if i+j==n:
-            print(f"{i+1} * {j} = {(i+1)*j}",end='\n')
+for i in range(1, n + 1):
+    for j in range(1, n - i + 2):
+        if i+j==n+1:
+            print(f"{i} * {j} = {i * j}", end = "\n")
         else:
-            print(f"{i+1} * {j} = {(i+1)*j}",end=' / ')
+            print(f"{i} * {j} = {i * j}", end = " / ")
