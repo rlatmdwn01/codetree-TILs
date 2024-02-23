@@ -15,4 +15,4 @@ for i in range(m):
         elif n==1:
             break
 
-print(cnt)
+    print(cnt)
