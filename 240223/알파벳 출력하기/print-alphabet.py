@@ -6,4 +6,5 @@ for i in range(n):
         if chr(65+cnt)=='Z':
             cnt=0
         print(chr(65+cnt),end="")
+        cnt+=1
     print()
