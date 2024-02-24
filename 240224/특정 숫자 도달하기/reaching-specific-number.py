@@ -10,4 +10,4 @@ for i in num_list:
 n=len(empty_list)
 sum_val=sum(empty_list)
 
-print(sum_val,sum_val/n )
+print(sum_val,"%.1f"%(sum_val/n) )
