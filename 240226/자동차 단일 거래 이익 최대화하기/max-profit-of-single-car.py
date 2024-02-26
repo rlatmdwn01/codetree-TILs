@@ -4,7 +4,7 @@ arr = list(map(int, input().split()))
 prev_min_idx = 0 
 min_idx = 0
 
-for i in range(prev_min_idx, n):
+for i in range(prev_min_idx+1, n):
     if arr[i] < arr[min_idx]:
         min_idx = i
 
