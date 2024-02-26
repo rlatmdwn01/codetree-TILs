@@ -11,7 +11,7 @@ for i in range(prev_min_idx, n):
     prev_min_idx = min_idx
 
 max_idx = min_idx
-for j in range(prev_min_idx, n):
+for j in range(prev_min_idx+1, n):
     if arr[max_idx] < arr[j]:
         max_idx = j
     
