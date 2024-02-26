@@ -1,10 +1,17 @@
-N=int(input())
-num_list=list(map(int,input().split()))
+n = int(input())
 
-num_list.sort()
+arr = list(map(int, input().split()))
 
-if num_list[-1]==num_list==[-2]:
+new_arr = []
+
+for elem in arr:
+
+    if arr.count(elem) == 1:
+        new_arr.append(elem)
+
+if len(new_arr) == 0:
+
     print(-1)
-
 else:
-    print(num_list[-1])
+
+    print(max(new_arr))
