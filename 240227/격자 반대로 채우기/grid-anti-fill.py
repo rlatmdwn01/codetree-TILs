@@ -10,10 +10,10 @@ if k%2==0:
                 num_list[i][j]=num
                 num+=1
 
-    else:
-        for i in range(n):
-            num_list[i][j]=num
-            num+=1
+        else:
+            for i in range(n):
+                num_list[i][j]=num
+                num+=1
 
 else:
     for j in range(n-1,-1,-1):
