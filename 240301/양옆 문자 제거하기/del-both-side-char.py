@@ -1,2 +1,5 @@
 word=input()
-print(word[:2]+word[3:len(word)-2]+word[-1])
+arr=list(word)
+arr.pop(1)
+arr.pop(-2)
+print(''.join(arr))
