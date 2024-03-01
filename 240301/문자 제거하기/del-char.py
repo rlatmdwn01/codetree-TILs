@@ -1,16 +1,15 @@
-word=input()
-n=len(word)
-arr=list(word)
-cnt=n
+s = input()
+arr = list(s)
 
-while cnt>1:
-    m=int(input())
+while len(arr) >1:
+    
+    n = int(input())
 
-    if m>n:
-        arr.pop(-1)
-        print(''.join(arr))
-        cnt-=1
+    if n >= len(arr):
+        arr.pop(len(arr)-1)
+        s = "".join(arr)
+        print(s)
     else:
-        arr.pop(m)
-        print(''.join(arr))
-        cnt-=1
+        arr.pop(n)
+        s = "".join(arr)
+        print(s)
