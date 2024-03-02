@@ -1,4 +1,8 @@
 alphabet=input()
 
 n=ord(alphabet)
-print(chr(n+1))
+
+if n==122:
+    print('a')
+else:
+    print(chr(n+1))
