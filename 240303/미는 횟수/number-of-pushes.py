@@ -8,7 +8,7 @@ for i in range(n):
         B=B[-1]+B[:-1]
         cnt+=1
     elif A==B:
-        print(cnt)
+        print(cnt-1)
         break
     if cnt>n-1:
         print(-1)
