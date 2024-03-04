@@ -1,9 +1,16 @@
-A = input()
-def palindrome(str_):
-    str_R = str_[::-1]
-    if str_ == str_R:
-        print('Yes')
-    else:
-        print('No')
+# 변수 선언 및 입력:
+string = input()
 
-palindrome(A)
+
+def palindrome(s):
+    for i in range(len(s)):
+        if s[i] != s[len(s) - i - 1]:
+            return False
+
+    return True
+
+
+if palindrome(string):
+    print("Yes")
+else:
+    print("No")
