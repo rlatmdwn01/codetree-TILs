@@ -32,3 +32,6 @@ def find_index():
 
     # 없다면, -1을 반환합니다.
     return -1
+
+
+print(find_index())
