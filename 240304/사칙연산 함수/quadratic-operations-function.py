@@ -13,7 +13,7 @@ def calculator(i,j,k):
         return False
 
 a,b,c=input().split()
-if b!='+' or '-' or '/' or '*':
-    print(calculator(a,b,c))
-else:
+if b=='+' or b=='-' or b=='/' or b=='*':
     print("{0} {1} {2} = {3}".format(a,b,c,calculator(a,b,c)))
+else:
+    print(calculator(a,b,c))
