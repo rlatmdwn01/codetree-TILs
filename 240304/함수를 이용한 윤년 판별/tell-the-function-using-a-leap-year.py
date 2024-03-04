@@ -1,7 +1,13 @@
 def leap_year(n):
-    if n%4==0 or (n%100==0 and n%400!=0):
+    if (y%100==0) and (y%4==0) and (y%400==0):
+        if y<400:
+            return False
+        else:
+            return True
+    if (y%100==0) and (y%4==0):
+        return False
+    if y%4==0:
         return True
-    return False
 
 y=int(input())
 if leap_year(y):
