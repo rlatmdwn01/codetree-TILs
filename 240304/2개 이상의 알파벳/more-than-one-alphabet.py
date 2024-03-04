@@ -8,7 +8,7 @@ def two_alphabet(word):
         if str_list[i]==str_list[i+1]:
             cnt+=1
 
-    if cnt==n:
+    if cnt+1==n:
         return False
     return True
 
