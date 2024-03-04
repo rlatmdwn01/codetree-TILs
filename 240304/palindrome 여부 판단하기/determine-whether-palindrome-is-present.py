@@ -1,15 +1,9 @@
-A=input()
-n=len(A)
-str_list=list(A)
+A = input()
+def palindrome(str_):
+    str_R = str_[::-1]
+    if str_ == str_R:
+        print('Yes')
+    else:
+        print('No')
 
-def palindrome(A):
-    for i in range(int(n//2)):
-        if str_list[i]==str_list[n-1-i]:
-            return True
-    return False
-
-
-if palindrome(A):
-    print('Yes')
-else:
-    print('No')
+palindrome(A)
