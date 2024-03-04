@@ -1,7 +1,8 @@
 def get_answer(A,B):
     for i in range(n1-n2-1):
-        if A[i]==B[0] and A[i+1]==B[1] and A[i+2]==B[2]:
-            return True
+        for j in range(n2):
+            if A[i]==B[j]:
+                return True
     return False
 
 n1,n2=tuple(map(int,input().split()))
