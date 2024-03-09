@@ -11,7 +11,7 @@ def calc_day(m,d):
 
     return total_days
 
-left_days = (calc_day(m2, d2) - calc_day(m1, d1))
+left_days = (calc_day(m2, d2) - calc_day(m1, d1))%7
 
 if left_days==-1 or left_days==6:
     print('Sun')
