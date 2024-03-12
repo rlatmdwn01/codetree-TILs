@@ -1,27 +1,37 @@
-def find_revisited_area(n, commands):
-    position = 0
-    visited = set()
-    revisited = set()
-    
-    for command in commands:
-        distance, direction = command.split()
-        distance = int(distance)
-        
-        for _ in range(distance):
-            if direction == "R":
-                position += 1
-            elif direction == "L":
-                position -= 1
-            
-            if position in visited:
-                revisited.add(position)
-            visited.add(position)
+offset=1000
+max_r=2000
 
-    return len(revisited)
+n=int(input())
+segments=[]
 
-# 입력을 받습니다.
-n = int(input())
-commands = [input() for _ in range(n)]
+cur=0
 
-# 결과를 출력합니다.
-print(find_revisited_area(n, commands))
+for _ in range(n):
+    distance,direction=tuple(input().split())
+    distance=int(distance)
+
+    if direction=='L':
+        section_left=cur-distance
+        section_right=cur
+        cur-=distance
+    else:
+        section_left=cur
+        section_right=cur+distance
+        cur+=distance
+
+
+    segments.append([section_left,section_right])
+
+checked=[0]*(max_r+1)
+
+for x1,x2 in segments:
+    x1,x2=x1+offset,x2+offset
+
+    for i in range(x1,x2):
+        checked[i]+=1
+
+cnt=0
+for elem in checked:
+    if elem>=2:
+        cnt+=1
+print(cnt)
