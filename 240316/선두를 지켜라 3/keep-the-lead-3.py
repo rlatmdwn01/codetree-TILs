@@ -1,46 +1,41 @@
-MAX_T = 1000000
+from sys import stdin
+n, m = list(map(int, stdin.readline().split()))
+move_A = [list(map(int, stdin.readline().split())) for _ in range(n)]
+move_B = [list(map(int, stdin.readline().split())) for _ in range(m)]
 
-# 변수 선언 및 입력
-n, m = tuple(map(int, input().split()))
-pos_a, pos_b = [0] * (MAX_T + 1), [0] * (MAX_T + 1)
+cur_A = [0]*1000001
+cur_B = [0]*1000001
 
-# A가 매 초마다 서있는 위치를 기록
-time_a = 1
-for _ in range(n):
-    v, t = tuple(map(int, input().split()))
+time_A = 1
+for v, t in move_A:
     for _ in range(t):
-        pos_a[time_a] = pos_a[time_a - 1] + v
-        time_a += 1
-
-# B가 매 초마다 서있는 위치를 기록
-time_b = 1
-for _ in range(m):
-    v, t = tuple(map(int, input().split()))
+        cur_A[time_A] = cur_A[time_A-1]+v
+        time_A += 1
+    
+time_B = 1
+for v, t in move_B:
     for _ in range(t):
-        pos_b[time_b] = pos_b[time_b - 1] + v
-        time_b += 1
+        cur_B[time_B] = cur_B[time_B-1]+v
+        time_B += 1
+    
+#A가 총 이동한 시간과 B가 총 이동한 시간은 항상 동일하게 주어짐을 가정해도 좋습니다.
+#이 조건이 없다면 먼저 끝났을 때 마지막 위치를 다른 시간이 끝날 때까지 넣어줘야 함
 
-# A와 B 중 더 앞서 있는 경우를 확인합니다.
-# A가 리더면 1, B가 리더면 2로 관리합니다.
-leader, ans = 0, 0
-for i in range(1, time_a):
-    if pos_a[i] > pos_b[i]:
-        # 기존 리더가 B였다면
-        # 답을 갱신합니다.
-        if leader == 2:
-            ans += 1
+#가능한 값은 3가지로 A, B, (A,B)임, 상태가 3개이므로 깝치지 말고 상태로 정의하자
+cnt = 0
+key = 0 #-1, 0, 1상태, 처음은 같은 상태
+for i in range(1, time_A): #time_A는 1이 증가된 상태임
+    if cur_A[i] > cur_B[i]: #순위가 바뀜!
+        if key != -1:
+            cnt+=1
+        key = -1
+    elif cur_A[i] == cur_B[i]:
+        if key != 0:
+            cnt+=1
+        key = 0
+    else:
+        if key != 1:
+            cnt+=1
+        key = 1
 
-        # 리더를 A로 변경합니다.
-        leader = 1
-    elif pos_a[i] < pos_b[i]:
-        # 기존 리더가 A였다면
-        # 답을 갱신합니다.
-        if leader == 1:
-            ans += 1
-
-        # 리더를 B로 변경합니다.
-        leader = 2
-    elif pos_a[i]==pos_b[i]:
-        ans+=1
-        
-print(ans)
+print(cnt)
