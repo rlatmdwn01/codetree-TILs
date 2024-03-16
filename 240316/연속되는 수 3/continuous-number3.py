@@ -1,11 +1,13 @@
 n = int(input())
-cnt = 1
+cnt = 0
 result = 0
 arr = []
 
 for _ in range(n):
     a = int(input())
     arr.append(a)
+
+print(arr)
     
 for i in range(n):
     if arr[i]>0:
@@ -13,8 +15,9 @@ for i in range(n):
     
     else:
         result = max(cnt, result)
-        cnt = 1
+        cnt = 0
         
     result = max(cnt, result)
 
-print(result+1)
+print(cnt,result)
+print(result)
