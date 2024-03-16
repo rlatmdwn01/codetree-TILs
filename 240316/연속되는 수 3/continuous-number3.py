@@ -6,8 +6,6 @@ arr = []
 for _ in range(n):
     a = int(input())
     arr.append(a)
-
-print(arr)
     
 for i in range(n):
     if arr[i]>0:
@@ -19,5 +17,4 @@ for i in range(n):
         
     result = max(cnt, result)
 
-print(cnt,result)
 print(result)
