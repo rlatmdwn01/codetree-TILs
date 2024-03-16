@@ -1,22 +1,20 @@
-n=int(input())
-num_list=[]
-plus_list=[]
-minus_list=[]
-cnt=1
-result=0
+n = int(input())
+cnt = 1
+result = 0
+arr = []
 
 for _ in range(n):
-    i=int(input())
-    num_list.append(i)
-
-for num in num_list:
-    if num<0:
-        minus_list.append(num)
+    a = int(input())
+    arr.append(a)
+    
+for i in range(n):
+    if arr[i]>0:
+        cnt += 1
+    
     else:
-        plus_list.append(num)
+        result = max(cnt, result)
+        cnt = 1
+        
+    result = max(cnt, result)
 
-if len(minus_list)>len(plus_list):
-    print(len(minus_list))
-
-else:
-    print(len(plus_list))
+print(result+1)
