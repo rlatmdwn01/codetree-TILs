@@ -1,32 +1,44 @@
-def count_leader_changes(N, M, A_moves, B_moves):
-    # A와 B의 초기 위치
-    A_position = 0
-    B_position = 0
-    leader_changes = 0
-    
-    # A와 B가 이동한 거리를 계산하고 선두가 바뀌었는지 확인
-    for i in range(max(N, M)):
-        if i < N:
-            A_v, A_t = A_moves[i]
-            A_position += A_v * A_t
-        if i < M:
-            B_v, B_t = B_moves[i]
-            B_position += B_v * B_t
+MAX_T = 1000000
+
+# 변수 선언 및 입력
+n, m = tuple(map(int, input().split()))
+pos_a, pos_b = [0] * (MAX_T + 1), [0] * (MAX_T + 1)
+
+# A가 매 초마다 서있는 위치를 기록
+time_a = 1
+for _ in range(n):
+    v, t = tuple(map(int, input().split()))
+    for _ in range(t):
+        pos_a[time_a] = pos_a[time_a - 1] + v
+        time_a += 1
+
+# B가 매 초마다 서있는 위치를 기록
+time_b = 1
+for _ in range(m):
+    v, t = tuple(map(int, input().split()))
+    for _ in range(t):
+        pos_b[time_b] = pos_b[time_b - 1] + v
+        time_b += 1
+
+# A와 B 중 더 앞서 있는 경우를 확인합니다.
+# A가 리더면 1, B가 리더면 2로 관리합니다.
+leader, ans = 0, 0
+for i in range(1, time_a):
+    if pos_a[i] > pos_b[i]:
+        # 기존 리더가 B였다면
+        # 답을 갱신합니다.
+        if leader == 2:
+            ans += 1
+
+        # 리더를 A로 변경합니다.
+        leader = 1
+    elif pos_a[i] < pos_b[i]:
+        # 기존 리더가 A였다면
+        # 답을 갱신합니다.
+        if leader == 1:
+            ans += 1
+
+        # 리더를 B로 변경합니다.
+        leader = 2
         
-        # 선두가 바뀌는지 확인
-        if A_position > B_position:
-            if i == 0 or A_position - A_v * A_t > B_position:
-                leader_changes += 1
-        elif B_position > A_position:
-            if i == 0 or B_position - B_v * B_t > A_position:
-                leader_changes += 1
-    
-    return leader_changes
-
-# 입력 받기
-N, M = map(int, input().split())
-A_moves = [list(map(int, input().split())) for _ in range(N)]
-B_moves = [list(map(int, input().split())) for _ in range(M)]
-
-# 결과 출력
-print(count_leader_changes(N, M, A_moves, B_moves))
+print(ans)
