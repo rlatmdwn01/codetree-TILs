@@ -9,7 +9,7 @@ mapper = {
 }
 
 def in_range(x,y):
-    return 0<= x and x < n and 0<=y and y<t
+    return 0<= x and x < n and 0<=y and y<n
 
 def move(x,y,time,t):
     c_dir = mapper[d]
